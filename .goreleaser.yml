@@ -48,6 +48,8 @@ universal_binaries:
 
 brews:
   - name: calyptia
+    ids:
+      - calyptia
     description: Calyptia Cloud CLI
     homepage: https://github.com/calyptia/cli
     tap:
