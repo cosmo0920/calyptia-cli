@@ -24,13 +24,24 @@ builds:
     ldflags:
       - -s -w -X main.version={{.Version}}
     targets:
+      - darwin_amd64
+      - darwin_arm64
       - linux_amd64
       - windows_amd64
     goarch:
       - amd64
       - arm64
 
-
+archives:
+  - id: calyptia
+    format: tar.gz
+    builds:
+      - calyptia
+  - id: calyptia-cli-pkg
+    format: binary
+    name_template: "calyptia-v{{ .Version }}-{{ .Arch }}"
+    builds:
+      - calyptia-cli-pkg
 
 universal_binaries:
   - replace: true
