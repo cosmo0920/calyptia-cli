@@ -5,21 +5,31 @@ blobs:
 
 builds:
   - main: ./cmd/calyptia
-    id: calyptia
-    binary: calyptia
+    id: calyptia-cli-pkg
+    binary: calyptia-cli-v{{.Version}}-{{.Arch}}.pkg
     ldflags:
       - -s -w -X main.version={{.Version}}
     targets:
       - darwin_amd64
       - darwin_arm64
-      - linux_amd64
-      - windows_amd64
     goarch:
       - amd64
       - arm64
     hooks:
       post:
         ./macos/create-package.sh {{ .Os }} {{ .Path }} {{ .Version }} {{ .Arch }}
+  - main: ./cmd/calyptia
+    id: calyptia
+    binary: calyptia
+    ldflags:
+      - -s -w -X main.version={{.Version}}
+    targets:
+      - linux_amd64
+      - windows_amd64
+    goarch:
+      - amd64
+      - arm64
+
 
 
 universal_binaries:

@@ -16,4 +16,5 @@ if [ $OS = "darwin" ]; then
 
     productbuild --quiet --package macos/${ARCH}/calyptia-cli.pkg calyptia-cli-v${VERSION}-${ARCH}.pkg
     rm -f macos/${ARCH}/calyptia-cli.pkg
+    cp calyptia-cli-v${VERSION}-${ARCH}.pkg $ROOT
 fi
